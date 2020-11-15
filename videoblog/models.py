@@ -64,9 +64,9 @@ class Video(Base):
 
     def delete(self):
         try:
-            session_db.delete()
+            session_db.delete(self)
             session_db.commit()
-        except Exception as e:
+        except Exception:
             session_db.rollback()
             raise
 

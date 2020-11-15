@@ -16,9 +16,7 @@ class ListView(BaseView):
     def get(self):
         try:
             videos = Video.get_list()
-            print(videos)
         except Exception as e:
-            print(e)
             logger.exception(e)
             return {'message': str(e)}, 400
         return videos

@@ -22,7 +22,7 @@ def register(**kwargs):
         return {'message': str(e)}, 400
     finally:
         session_db.commit()
-    return jsonify({'access_token': token})
+    return jsonify({'access_token': f"Bearer {token}"})
 
 
 @users.route('/login', methods=['POST'])
