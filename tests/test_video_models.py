@@ -1,5 +1,5 @@
 
-def test_list(video, client, user_headers):
+def test_list(user, video, client, user_headers):
     res = client.get('/tutorials', headers=user_headers)
 
     assert res.status_code == 200
@@ -8,8 +8,8 @@ def test_list(video, client, user_headers):
     assert res.get_json()[0] == {
         'name': 'Video 1',
         'description': 'Description',
-        'user_id': 1,
-        'id': 1
+        'user_id': user.id,
+        'id': video.id
     }
 
 

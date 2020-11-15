@@ -1,6 +1,6 @@
 import os, sys
 sys.path.append(os.getcwd())
-from flask import Flask, jsonify
+from flask import Flask
 import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
@@ -16,7 +16,7 @@ import logging
 app = Flask(__name__)
 app.config.from_object(Config)
 client = app.test_client()
-engine = create_engine('postgresql://postgres:1603@localhost/flasktest')
+engine = create_engine(f'postgresql://{Config.DB_USER}:{Config.DB_PASSWORD}@{Config.DB_HOST}:{Config.DB_PORT}/{Config.DB_NAME}')
 session_db = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
 Base = declarative_base()
 Base.query = session_db.query_property()
