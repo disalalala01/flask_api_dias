@@ -3,4 +3,4 @@ COPY . /app
 EXPOSE 5005
 WORKDIR /app
 RUN pip install -r requirements.txt
-CMD ["gunicorn"]
+CMD ["gunicorn", ""]
